@@ -1,5 +1,9 @@
-# @tencent/capi-sdk-browser-common
+# @tomtoms/capi-web-sdk
 
+## 概述
 
+封装 TencentCloud Api Web SDK Common 版本，基于 [tencentcloud-sdk-nodejs](https://github.com/TencentCloud/tencentcloud-sdk-nodejs) 开发。
 
-封装 tencentcloud-sdk common 版本，在 [tencentcloud-sdk-nodejs](https://github.com/TencentCloud/tencentcloud-sdk-nodejs) 基础上进行重写，用于在浏览器中调用 云 API 接口。
+## 联系方式
+
+如果使用有问题请联系 stomtomyoung@gmail.com。
