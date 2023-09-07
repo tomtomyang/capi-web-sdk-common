@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "build:cjs": "rimraf dist-cjs && tsc --target es2015 --outDir dist-cjs --module commonjs --declaration",
-    "build:esm": "rimraf dist && tsc --target es2015 --outDir dist --module es2015 --declaration"
+    "build:esm": "rimraf dist && tsc --target es2015 --outDir dist --module es2015 --declaration",
+    "prepublishOnly": "npm run build:esm"
   },
   "dependencies": {
     "qs": "^6.11.1"
