@@ -1,10 +1,10 @@
 {
-  "name": "@tomtoms/capi-web-sdk",
+  "name": "capi-web-sdk-common",
   "version": "2.0.0",
-  "description": "TencentCloud API Browser SDK Common edition",
+  "description": "TencentCloud API Web SDK Common edition",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "author": "stomtomyang@gmail.com",
+  "author": "tomtomyang@tencent.com",
   "license": "Apache",
   "files": [
     "dist/",

@@ -1,7 +1,8 @@
 import qs from 'qs';
+
+import { Credential } from './client';
 import { mergeData } from './data';
 import { sign, signV3 } from './sign';
-import { Credential } from './client';
 
 type CgiRequestProps = {
   endpoint: string;
@@ -95,6 +96,7 @@ function formatSignString(params = {}, method: 'POST' | 'GET', endpoint: string,
     }
     strParam += `&${keys[key]}=${params[keys[key]]}`;
   }
+
   const signStr = `${method + endpoint + path}?${strParam.slice(1)}`;
   return signStr;
 }
@@ -121,7 +123,7 @@ export async function cgiRequestWithSignV3({
   const config = {
     method,
     headers: Object.assign({}, headers, {
-      'Host': new URL(url).host,
+      Host: new URL(url).host,
       'X-TC-Action': action,
       'X-TC-Timestamp': String(timestamp),
       'X-TC-Version': version,
@@ -168,7 +170,7 @@ export async function cgiRequestWithSignV3({
     multipart,
     boundary: form ? form.getBoundary() : null,
   });
-  config.headers['Authorization'] = signature;
+  config.headers.Authorization = signature;
   return await fetch(url, config);
 }
 

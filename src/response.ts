@@ -1,8 +1,8 @@
-import { CapiInsigntException, HttpStatusException } from './exception';
+import { CapiHttpStatusException, CapiInsigntException } from './exception';
 
 export async function handleResponse(action: string, res: any): Promise<any> {
-  if (res.status !== 200) {
-    const httpError = new HttpStatusException(res.status, res?.statusText || '');
+  if (res?.status !== 200) {
+    const httpError = new CapiHttpStatusException(action, res?.status || '', res?.statusText || '');
     throw httpError;
   } else {
     const data = await res.json();

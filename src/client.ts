@@ -1,6 +1,6 @@
+import { CapiUnexpectedException } from './exception';
 import { cgiRequest, cgiRequestWithSignV3 } from './request';
 import { handleResponse } from './response';
-import { CapiSDKException } from './exception';
 
 export interface Credential {
   /**
@@ -178,18 +178,18 @@ export class CapiClient {
         version: this.apiVersion,
         region: this.region,
         language: this.profile.language,
-        credential: credential,
+        credential,
         method: this.profile.httpProfile.reqMethod,
         path: this.path,
-        action: action,
+        action,
         url: this.profile.httpProfile.protocol + this.endpoint + this.path,
         data: req || {},
         signMethod: this.profile.signMethod as 'HmacSHA1' | 'HmacSHA256',
         timeout: this.profile.httpProfile.reqTimeout * 1000,
         headers: Object.assign({}, this.profile.httpProfile.headers, options?.headers),
       });
-    } catch (e) {
-      throw new CapiSDKException((e as Error).message);
+    } catch (err: any) {
+      throw new CapiUnexpectedException(action, err?.message);
     }
     return handleResponse(action, res);
   }
@@ -211,15 +211,15 @@ export class CapiClient {
         secretKey: credential.secretKey,
         token: credential.token,
         method: this.profile.httpProfile.reqMethod,
-        action: action,
+        action,
         url: this.profile.httpProfile.protocol + this.endpoint + this.path,
         data: req || {},
-        multipart: options && options.multipart,
+        multipart: options?.multipart,
         timeout: this.profile.httpProfile.reqTimeout * 1000,
         headers: Object.assign({}, this.profile.httpProfile.headers, options.headers),
       });
-    } catch (e) {
-      throw new CapiSDKException((e as Error).message);
+    } catch (err: any) {
+      throw new CapiUnexpectedException(action, err.message);
     }
     return handleResponse(action, res);
   }
