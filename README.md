@@ -12,3 +12,32 @@ npm install
 npm run build:esm
 npm run build:cjs
 ```
+
+## 使用
+
+```js
+import { CapiClient } from 'capi-web-sdk-common';
+
+const capiEndpoint = 'xxx.tencentcloudapi.com';
+const capiVersion = 'xxxx-xx-xx';
+
+const capiConfig = {
+  region: 'ap-xxxxx',
+  credential: {
+    secretId: 'xxxxx',
+    secretKey: 'xxxxx',
+  },
+  profile: {
+    signMethod: 'TC3-HMAC-SHA256',
+    language: 'en-US',
+    httpProfile: {
+      reqMethod: 'POST',
+      reqTimeout: 30,
+    },
+  },
+};
+
+const capiClient = new CapiClient(capiEndpoint, capiVersion, capiConfig);
+
+const response = await capiClient.request('xxxxx', {});
+```
