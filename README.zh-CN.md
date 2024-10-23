@@ -2,17 +2,17 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-## Overview
+## 概述
 
-Based on [tencentcloud-sdk-nodejs](https://github.com/TencentCloud/tencentcloud-sdk-nodejs), this package encapsulates the TencentCloud API Web SDK Common version, providing the ability to directly request Tencent Cloud APIs in a Web Standard environment.
+基于 [tencentcloud-sdk-nodejs](https://github.com/TencentCloud/tencentcloud-sdk-nodejs)，封装 TencentCloud API Web SDK Common 版本，提供在 Web Standard 环境下的直接请求腾讯云 API 的能力。
 
-## Installation
+## 安装
 
 ```shell
 npm i capi-web-sdk-common
 ```
 
-## Usage
+## 使用
 
 ```js
 import { CapiClient } from 'capi-web-sdk-common';
